@@ -157,7 +157,7 @@ export default function Index({ posts }: { posts: Post[] }) {
           return (
             <section key={x.slug} className="w-full">
               <nav>
-                <header className="text-primary-link transition-colors duration-500 cursor-pointer hover:underline">
+                <header className="inline-flex text-primary-link transition-colors duration-500 cursor-pointer hover:underline">
                   <Link href={toPost(x.slug)}>
                     <h3 className="text-2xl font-bold">{x.title}</h3>
                   </Link>

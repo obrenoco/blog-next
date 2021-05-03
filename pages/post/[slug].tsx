@@ -59,7 +59,7 @@ export const Component = ({ post }: Props) => {
       <Head>
         <meta name="description" content={post.description} />
         <meta name="keywords" content={post.subjects.join(",")} />
-        <title>Garcez Blog | {post.title}</title>
+        <title>Brenoco's Blog | {post.title}</title>
       </Head>
       <header className="mb-8">
         <h1 className="font-bold text-5xl">{post.title}</h1>
