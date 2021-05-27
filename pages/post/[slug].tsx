@@ -60,7 +60,7 @@ export async function getStaticProps({ params }: Params) {
 
 const TableOfContent = (props: { items: Content[] }) => {
   return (
-    <ul className="my-4">
+    <ul className="fixed top-6 right-5">
       {props.items.map((item) => (
         <li key={item.id} className="hover:text-primary my-2">
           <a href={`#${item.id}`}>{item.text}</a>
@@ -103,24 +103,26 @@ export const Component = ({ post }: Props) => {
   }, []);
 
   return (
-    <section className="flex flex-col w-full">
-      <Head>
-        <meta name="description" content={post.description} />
-        <meta name="keywords" content={post.subjects.join(",")} />
-        <title>Brenoco's Blog | {post.title}</title>
-      </Head>
-      <header className="mb-8">
-        <h1 className="font-bold text-5xl">{post.title}</h1>
-        <p className="prose mt-4 mb-2">{post.description}</p>
-        <time className="text-md prose">{date}</time>
-      </header>
+    <>
+      <section className="flex flex-col w-full">
+        <Head>
+          <meta name="description" content={post.description} />
+          <meta name="keywords" content={post.subjects.join(",")} />
+          <title>Brenoco's Blog | {post.title}</title>
+        </Head>
+        <header className="mb-8">
+          <h1 className="font-bold text-5xl">{post.title}</h1>
+          <p className="prose mt-4 mb-2">{post.description}</p>
+          <time className="text-md prose">{date}</time>
+        </header>
+        <section
+          ref={ref}
+          className="markdown prose lg:prose-xl"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </section>
       {<TableOfContent items={tableOfContent} />}
-      <section
-        ref={ref}
-        className="markdown prose lg:prose-xl"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-    </section>
+    </>
   );
 };
 
